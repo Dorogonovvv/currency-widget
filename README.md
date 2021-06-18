@@ -1,3 +1,10 @@
+# Notes for the code reviewer
+- Please paste your [api token](https://manage.exchangeratesapi.io/quickstart) to ACCESS_KEY variable in /src/conf.ts to be able to test the widget;
+- Added just couple of unit tests because of time, hope the idea will be clear;
+- used `react-query` library because I think it's good solution for currency exchange market, where it can be configured to re-fetch data by interval etc. Also, it can keep cache until data re-fetch.
+- DATA WILL BE REFRESHED ON WINDOW BLUR;
+- I was not covering adaptive design;
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

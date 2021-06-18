@@ -1,0 +1,19 @@
+.widget .ant-btn {
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.ant-layout-content {
+    padding: 20px;
+}
+
+.currency-list {
+    max-height: calc(100vh - 40px);
+    overflow-y: scroll;
+}
+
+.spin-wrapper {
+    margin: 20px;
+    text-align: center;
+}
