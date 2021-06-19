@@ -1,7 +1,7 @@
 import { Button, Col, Row, Space, Typography } from "antd";
 import React from "react";
 
-interface CurrenciesProps {
+export interface CurrenciesProps {
   rates: Record<string, number>;
   onSelect: (currency: string) => void;
 }

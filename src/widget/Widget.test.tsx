@@ -1,7 +1,14 @@
 import React from "react";
-import { render, findByText } from "@testing-library/react";
+import { render, findByText, getByText } from "@testing-library/react";
 import { Widget } from "./Widget";
 import * as useGetExchangeHook from "../hooks/use-get-exchange";
+
+jest.mock("./Currencies", () => {
+  return { Currencies: () => "Currencies" };
+});
+jest.mock("./Chart", () => {
+  return { LineChart: () => "LineChart" };
+});
 
 describe("Widget", () => {
   it("should check loading state", () => {
@@ -29,20 +36,20 @@ describe("Widget", () => {
   });
 
   it("should render Currencies and Chart", async () => {
-    // Need to figure out TypeError: window.matchMedia is not a function
-    // jest.spyOn(useGetExchangeHook, "useGetExchange").mockReturnValue({
-    //   isLoading: false,
-    //   error: null,
-    //   data: {
-    //     success: true,
-    //     timestamp: 1624054330,
-    //     base: "EUR",
-    //     date: new Date(),
-    //     rates: { EUR: 1.23 },
-    //   },
-    // });
-    // const { container } = render(<Widget />);
-    //
-    // expect(container.querySelector(".widget")).toBeTruthy();
+    jest.spyOn(useGetExchangeHook, "useGetExchange").mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        success: true,
+        timestamp: 1624054330,
+        base: "EUR",
+        date: new Date(),
+        rates: { EUR: 1.23 },
+      },
+    });
+
+    const { container } = render(<Widget />);
+    expect(getByText(container, "Currencies")).toBeTruthy();
+    expect(getByText(container, "LineChart")).toBeTruthy();
   });
 });
